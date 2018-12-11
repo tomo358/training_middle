@@ -148,6 +148,27 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="bcrypt (vbundled(3.1.12)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/ext" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/spec" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/ext" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/spec" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/ext" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/bcrypt-3.1.12/spec" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="bindex (vbundled(0.5.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
@@ -285,6 +306,38 @@
         </SOURCES>
         <excluded>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/crass-1.0.4/test" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="devise (vbundled(4.5.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/app" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/config" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/guides" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/gemfiles" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/app" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/config" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/guides" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/gemfiles" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/bin" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/test" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/config" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/guides" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/devise-4.5.0/gemfiles" />
         </excluded>
       </library>
     </orderEntry>
@@ -695,6 +748,27 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="orm_adapter (vbundled(0.5.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/gemfiles" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/gemfiles" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/spec" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/orm_adapter-0.5.0/gemfiles" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="puma (vbundled(3.12.0)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="3" />
@@ -890,6 +964,19 @@
         <excluded>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/rb-inotify-0.9.10/spec" />
         </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="responders (vbundled(2.4.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/responders-2.4.0/lib" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/responders-2.4.0/lib" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
@@ -1138,6 +1225,19 @@
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/uglifier-4.1.20/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="warden (vbundled(1.2.8)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="3" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/warden-1.2.8/lib" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.3.0/gems/warden-1.2.8/lib" />
         </SOURCES>
       </library>
     </orderEntry>
