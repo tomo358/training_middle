@@ -56,4 +56,4 @@ production:
   port: 3306
   database: heroku_37db0ca098b7c8f
   username: b0bbd9e31b539c
-  password: <%= ENV['TRAINING_MIDDLE_DATABASE_PASSWORD_PRODUCTION'] %>
+  password: dc9233a5
