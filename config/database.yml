@@ -54,6 +54,6 @@ production:
   pool: 5
   host: us-cdbr-iron-east-01.cleardb.net
   port: 3306
-  database: heroku_37db0ca098b7c8f
-  username: b0bbd9e31b539c
-  password: dc9233a5
+  database: heroku_b9a475f43720f95
+  username: b6d555c999bd5c
+  password: 913d2094
