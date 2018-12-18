@@ -1,28 +1,29 @@
-<h1>Tasks</h1>
+<h2>マイページ</h2>
 
 <table>
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Deadline</th>
-      <th>Status</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Deadline</th>
+    <th>Status</th>
+    <th>User</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @tasks.each do |task| %>
+  <% @tasks.each do |task| %>
+    <% if task.user_id == current_user.id %>
       <tr>
         <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= task.deadline %></td>
         <td><% if task.status == true %>
-              <p>対応中</p>
-            <% else %>
-              <p>未対応</p>
-            <% end %>
+            <p>対応中</p>
+          <% else %>
+            <p>未対応</p>
+          <% end %>
         </td>
         <td><%= task.user_id %></td>
         <td><%= link_to 'Show', task %></td>
@@ -30,12 +31,7 @@
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  <% end %>
 
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Task', new_task_path %>
-
-<%= link_to 'mypage', mypage_show_task_path(current_user.id) %>

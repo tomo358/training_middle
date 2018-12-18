@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:mypage_show]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   # GET /tasks
@@ -11,6 +12,10 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+  end
+
+  def mypage_show
+    @tasks = Task.all
   end
 
   # GET /tasks/new
@@ -55,10 +60,17 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task.destroy
-    respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+    if @task.user_id == current_user.id
+      @task.destroy
+      respond_to do |format|
+        format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to tasks_url, notice: 'Only the person in charge can delete it.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -66,6 +78,10 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_user
+      @user = current_user.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
