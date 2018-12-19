@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :tasks  do
     member do
       get 'mypage_show'
+      get 'assign'
     end
   end
 

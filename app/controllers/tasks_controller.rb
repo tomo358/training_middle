@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:mypage_show]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
+  before_action :set_user, only: [:mypage_show, :assign]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :mypage_show]
 
   # GET /tasks
   # GET /tasks.json
@@ -16,6 +16,10 @@ class TasksController < ApplicationController
 
   def mypage_show
     @tasks = Task.all
+  end
+
+  def assign
+    @users = User.all
   end
 
   # GET /tasks/new
@@ -47,7 +51,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
-      if @task.update(task_params)
+      if @user.update(user_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -86,6 +90,11 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :content, :deadline, :status, :user_id_id)
+      params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
     end
+
+    def user_params
+      params.require(:user).permit(:name, :email, :assign_user)
+    end
+
 end

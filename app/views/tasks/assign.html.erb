@@ -1,0 +1,45 @@
+<h1>タスクアサイン</h1>
+
+<%= form_for @task do |f| %>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.collection_select :user, @users, :assign_user, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<p>
+  <strong>現在アサインされているユーザー</strong>
+  <%= @task.user.name %>
+</p>
+
+<p>
+  <strong>新しくアサインするユーザー</strong>
+<p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @task.content %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @task.deadline %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user_id %>
+</p>
+
+
+<%= link_to 'Back', tasks_path %>
