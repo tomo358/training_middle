@@ -1,10 +1,10 @@
 <h1>タスクアサイン</h1>
 
-<%= form_for @task do |f| %>
+<%= form_for @task, :url => {:action => 'assign_update'} do |f| %>
 
   <div class="field">
     <%= f.label :user %>
-    <%= f.collection_select :user, @users, :assign_user, :name %>
+    <%= f.collection_select :user, @user, :id, :name %>
   </div>
 
   <div class="actions">

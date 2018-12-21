@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       get 'mypage_show'
       get 'assign'
+      patch 'assign_update'
     end
   end
 

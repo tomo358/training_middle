@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign, :assign_update]
   before_action :set_user, only: [:mypage_show, :assign]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :mypage_show]
 
@@ -19,7 +19,21 @@ class TasksController < ApplicationController
   end
 
   def assign
-    @users = User.all
+    @user = User.all
+  end
+
+  def assign_update
+    respond_to do |format|
+
+         @task = Task.find(params[:id])
+      if @task.update(user_id: user_params[:user].to_i)
+        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /tasks/new
@@ -50,8 +64,11 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+
     respond_to do |format|
-      if @user.update(user_params)
+
+         @task = Task.find(params[:id])
+      if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -90,11 +107,11 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
+      params.require(:task).permit(:title, :content, :deadline, :status, :user_id_id)
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :assign_user)
+      params.require(:task).permit(:user)
     end
 
 end
