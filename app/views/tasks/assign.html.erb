@@ -1,0 +1,41 @@
+<h1>タスクアサイン</h1>
+
+<% if current_user.id == @task.user_id %>
+  <%= form_for @task, :url => {:action => 'assign_update'} do |f| %>
+
+    <div class="field">
+      <%= f.label :新しくアサインするユーザー %>
+      <%= f.collection_select :user, @user, :id, :name %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <p>
+    <strong>現在アサインされているユーザー:</strong>
+    <%= @task.user.name %>
+  </p>
+
+  <p>
+    <strong>内容:</strong>
+    <%= @task.content %>
+  </p>
+
+  <p>
+    <strong>締め切り:</strong>
+    <%= @task.deadline %>
+  </p>
+
+  <p>
+    <strong>ステータス:</strong>
+    <%= @task.status %>
+  </p>
+
+<% else %>
+  <p>タスクのアサインは、担当者しか出来ません</p>
+<% end %>
+
+
+<%= link_to 'Back', tasks_path %>
