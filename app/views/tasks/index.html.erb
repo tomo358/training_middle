@@ -5,31 +5,41 @@
     <tr>
       <th>タイトル</th>
       <th>内容</th>
-      <th>締め切り</th>
+      <th>締め切り(赤文字は期限切れタスク)</th>
       <th>ステータス</th>
-      <th>ユーザー</th>
+      <th>担当者</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= task.deadline %></td>
-        <td><% if task.status == true %>
-              <p>対応中</p>
-            <% else %>
-              <p>未対応</p>
-            <% end %>
-        </td>
-        <td><%= task.user_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'assign', assign_task_path(task) %></td>
-      </tr>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.content %></td>
+        <% if DateTime.now > task.deadline %>
+          <td class="deadline"><%= task.deadline %></td>
+        <% else %>
+          <td><%= task.deadline %></td>
+        <% end %>
+          <td><% if task.status == true %>
+                <p>対応中</p>
+              <% else %>
+                <p>未対応</p>
+              <% end %>
+          </td>
+          <td><%= task.user_id %></td>
+      <% if user_signed_in? %>
+        <% if task.user_id == current_user.id %>
+          <td><%= link_to 'Show', task %></td>
+          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+          <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'assign', assign_task_path(task) %></td>
+        <% else %>
+            <td><%= link_to 'Show', task %></td>
+        <% end %>
+        </tr>
+      <% end %>
     <% end %>
 
   </tbody>
