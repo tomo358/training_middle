@@ -27,8 +27,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :status %>
-    <%= f.check_box :status %>
+    <% if params[:action] == "new" %>
+      <label><%= f.radio_button :status, 1 %>対応中</label>
+      <label><%= f.radio_button :status, 2 %>未対応</label>
+    <% elsif params[:action] == "edit" %>
+      <label><%= f.radio_button :status, 1 %>対応中</label>
+      <label><%= f.radio_button :status, 2 %>未対応</label>
+      <label><%= f.radio_button :status, 3 %>完了</label>
+    <% end %>
   </div>
 
   <div class="actions">

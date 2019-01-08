@@ -22,10 +22,12 @@
         <% else %>
           <td><%= task.deadline %></td>
         <% end %>
-          <td><% if task.status == true %>
+          <td><% if task.status == "1" %>
                 <p>対応中</p>
-              <% else %>
+              <% elsif task.status == "2" %>
                 <p>未対応</p>
+              <% elsif task.status == "3" %>
+                <p>完了</p>
               <% end %>
           </td>
           <td><%= task.user_id %></td>
@@ -48,4 +50,3 @@
 <br>
 
 <%= link_to 'New Task', new_task_path %>
-
