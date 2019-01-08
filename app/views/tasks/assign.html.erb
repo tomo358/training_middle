@@ -30,7 +30,13 @@
 
   <p>
     <strong>ステータス:</strong>
-    <%= @task.status %>
+    <% if @task.status == "1" %>
+      対応中
+    <% elsif @task.status == "2" %>
+      未対応
+    <% elsif @task.status == "3" %>
+      完了
+    <% end %>
   </p>
 
 <% else %>
