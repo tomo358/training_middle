@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20181211040625) do
     t.string   "title"
     t.text     "content",    limit: 65535
     t.datetime "deadline"
-    t.boolean  "status"
+    t.string   "status"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "user_id"
