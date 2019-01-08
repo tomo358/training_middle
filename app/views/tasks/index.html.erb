@@ -30,7 +30,7 @@
                 <p>完了</p>
               <% end %>
           </td>
-          <td><%= task.user_id %></td>
+          <td><%= task.user.name %></td>
       <% if user_signed_in? %>
         <% if task.user_id == current_user.id %>
           <td><%= link_to 'Show', task %></td>
