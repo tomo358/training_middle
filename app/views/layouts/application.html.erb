@@ -17,7 +17,7 @@
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     ようこそ<%= current_user.name %>さん
   <% else %>
-    <%= link_to "マイタスク", mypage_show_task_path(current_user.id) %>
+    <%= link_to "マイタスク", new_user_session_path %>
     <%= link_to "タスク一覧", tasks_path %>
     <%= link_to "ユーザー設定", edit_user_registration_path %>
     <%= link_to "ログイン", new_user_session_path %>

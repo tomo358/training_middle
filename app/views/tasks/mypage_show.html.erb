@@ -1,36 +1,24 @@
-<h1>マイページ</h1>
-
-<%= link_to 'New Task', new_task_path %>
-<table>
-  <thead>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-    <th>締め切り</th>
-    <th>ステータス</th>
-    <th>担当者</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<h1>マイタスク</h1>
 
   <tbody>
+  <%= link_to 'New Task', new_task_path %>
   <% @tasks.each do |task| %>
     <% if task.user_id == current_user.id %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= task.deadline %></td>
-        <td><% if task.status == true %>
-            <p>対応中</p>
-          <% else %>
-            <p>未対応</p>
-          <% end %>
-        </td>
-        <td><%= task.user_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <ul>
+        <li><%= task.title %></li>
+        <li>期限：<%= task.deadline %></li>
+        <li>担当者：<%= task.user.name %></li>
+        <li>ステータス：<% if task.status == true %>
+                        対応中
+                      <% else %>
+                        未対応
+                      <% end %>
+        </li>
+
+        <td><%= link_to '詳細', task, class: 'btn btn-default' %></td>
+        <td><%= link_to '編集', edit_task_path(task), class: 'btn btn-info' %></td>
+        <td><%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </ul>
     <% end %>
   <% end %>
 

@@ -22,12 +22,13 @@
   <% elsif @task.status == "3" %>
     完了
   <% end %>
-
 </p>
 
 <p>
   <strong>担当者:</strong>
   <%= @task.user.name %>
 </p>
+
+<td><%= link_to 'assign', assign_task_path(@task) %></td>
 
 <%= link_to 'Back', tasks_path %>
