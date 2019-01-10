@@ -1,47 +1,42 @@
-<h1>タスクアサイン</h1>
-
-<% if current_user.id == @task.user_id %>
-  <%= form_for @task, :url => {:action => 'assign_update'} do |f| %>
-
-    <div class="field">
-      <%= f.label :新しくアサインするユーザー %>
-      <%= f.collection_select :user, @user, :id, :name %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  <% end %>
-
-  <p>
-    <strong>現在アサインされているユーザー:</strong>
-    <%= @task.user.name %>
-  </p>
-
-  <p>
-    <strong>内容:</strong>
-    <%= @task.content %>
-  </p>
-
-  <p>
-    <strong>締め切り:</strong>
-    <%= @task.deadline %>
-  </p>
-
-  <p>
-    <strong>ステータス:</strong>
-    <% if @task.status == "1" %>
-      対応中
-    <% elsif @task.status == "2" %>
-      未対応
-    <% elsif @task.status == "3" %>
-      完了
+<div class="container">
+  <h1>アサイン</h1>
+  <% if current_user.id == @task.user_id %>
+    <%= form_for @task, :url => {:action => 'assign_update'} do |f| %>
+        <p>現在アサインされているユーザー</p>
+        <p><%= f.label :新しくアサインするユーザー, class: "new_assign" %></p>
+        <p><%= @task.user.name %></p>
+        <p class="assign_select"><%= f.collection_select :user, @user, :id, :name, {}, {class: "form-control"} %></p>
+        <p><button type="submit" class="btn btn-success" style="margin-left: 0px;">アサインする</button></p>
     <% end %>
-  </p>
+    <div class="row">
+    <div class="mx-auto">
+      <div class="card bg-light mb-3" style="max-width: 20rem;">
+        <h1>
+          タスク <%= @task.id %>
+        </h1>
 
-<% else %>
-  <p>タスクのアサインは、担当者しか出来ません</p>
-<% end %>
+        <p>
+          <%= @task.title %>
+        </p>
 
+        <p>
+          期限：<%= @task.deadline %>
+        </p>
 
-<%= link_to 'Back', tasks_path %>
+        <p>
+          ステータス:
+          <% if @task.status == "1" %>
+            対応中
+          <% elsif @task.status == "2" %>
+            未対応
+          <% elsif @task.status == "3" %>
+            完了
+          <% end %>
+        </p>
+      </div>
+
+  <% else %>
+    <p>タスクのアサインは、担当者しか出来ません</p>
+  <% end %>
+  </div>
+</div>

@@ -1,16 +1,12 @@
 <% if @task.user_id == current_user.id %>
 
-  <h1>Editing Task</h1>
-
   <%= render 'form', task: @task %>
 
   <%= link_to 'Show', @task %> |
-  <%= link_to 'Back', tasks_path %>
 
 <% else %>
   <p>タスク編集は、担当者しか出来ません</p>
 
   <%= link_to 'Show', @task %> |
-  <%= link_to 'Back', tasks_path %>
 
 <% end %>
