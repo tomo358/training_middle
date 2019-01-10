@@ -1,33 +1,33 @@
-<p>
-  <strong>タイトル:</strong>
-  <%= @task.title %>
-</p>
+<div class="mx-auto">
+  <h1>タスク詳細</h1>
+  <div class="card bg-light mb-3" style="max-width: 20rem;">
+    <h1>タスク<%= @task.id %></h1>
+      <ul>
+        <li><%= @task.title %></li>
 
-<p>
-  <strong>内容:</strong>
-  <%= @task.content %>
-</p>
+        <li>期限:<%= @task.deadline %></li>
 
-<p>
-  <strong>締め切り:</strong>
-  <%= @task.deadline %>
-</p>
+        <li>担当者:<%= @task.user.name %></li>
 
-<p>
-  <strong>ステータス:</strong>
-  <% if @task.status == "1" %>
-    対応中
-  <% elsif @task.status == "2" %>
-    未対応
-  <% elsif @task.status == "3" %>
-    完了
-  <% end %>
+        <li>ステータス:
+          <% if @task.status == "1" %>
+            対応中
+          <% elsif @task.status == "2" %>
+            未対応
+          <% elsif @task.status == "3" %>
+            完了
+          <% end %>
+        </li>
 
-</p>
-
-<p>
-  <strong>担当者:</strong>
-  <%= @task.user.name %>
-</p>
-
-<%= link_to 'Back', tasks_path %>
+        <% if user_signed_in? %>
+          <% if @task.user_id == current_user.id %>
+            <td><%= link_to '一覧へ戻る', tasks_path, class: 'btn btn-secondary' %></td>
+            <td><%= link_to '編集', edit_task_path(@task), class: 'btn btn-info' %></td>
+            <td><%= link_to 'アサイン', assign_task_path(@task), class: 'btn btn-success' %></td>
+          <% else %>
+            <td><%= link_to '一覧へ戻る', tasks_path, class: 'btn btn-secondary' %></td>
+          <% end %>
+        <% end %>
+      </ul>
+  </div>
+</div>

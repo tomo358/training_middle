@@ -1,38 +1,50 @@
-<h1>マイページ</h1>
+<div class="container">
+  <h1>マイタスク</h1>
+    <%= link_to 'New Task', new_task_path, class: 'btn btn-secondary', style: 'margin-left: 0px;' %>
+      <div class="row">
 
-<%= link_to 'New Task', new_task_path %>
-<table>
-  <thead>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-    <th>締め切り</th>
-    <th>ステータス</th>
-    <th>担当者</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @tasks.each do |task| %>
-    <% if task.user_id == current_user.id %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= task.deadline %></td>
-        <td><% if task.status == true %>
-            <p>対応中</p>
+      <% @tasks.each do |task| %>
+        <% if task.user_id == current_user.id %>
+        <div class="col-xs-12 col-md-6">
+          <% if task.deadline >= DateTime.now %>
+            <div  class="card bg-light mb-3" style="max-width: 20rem;">
+            <ul>
+              <div class="card-header">タスク</div>
+              <li><%= task.title %></li>
+              <li>期限：<%= task.deadline %></li>
+              <li>担当者：<%= task.user.name %></li>
+              <li>ステータス：<% if task.status == "1" %>
+                              対応中
+                            <% elsif task.status == "2" %>
+                              未対応
+                            <% elsif task.status == "3" %>
+                              完了
+                            <% end %>
+              </li>
           <% else %>
-            <p>未対応</p>
-          <% end %>
-        </td>
-        <td><%= task.user_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  <% end %>
+            <div  class="card bg-light mb-3" style="max-width: 20rem; color: red;">
+            <ul>
+              <div class="card-header">タスク</div>
+              <li><%= task.title %></li>
+              <li>期限：<%= task.deadline %></li>
+              <li>担当者：<%= task.user.name %></li>
+              <li>ステータス：<% if task.status == "1" %>
+                              対応中
+                            <% elsif task.status == "2" %>
+                              未対応
+                            <% elsif task.status == "3" %>
+                              完了
+                            <% end %>
+              </li>
+            <% end %>
 
-  </tbody>
-</table>
+            <td><%= link_to '詳細', task, class: 'btn btn-secondary' %></td>
+            <td><%= link_to '編集', edit_task_path(task), class: 'btn btn-info' %></td>
+            <td><%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </ul>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+      </div>
+</div>

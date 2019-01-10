@@ -9,19 +9,23 @@
   </head>
 
   <body>
-    タスク管理アプリ
-  <% if user_signed_in? %>
-    <%= link_to "マイタスク", mypage_show_task_path(current_user.id) %>
-    <%= link_to "タスク一覧", tasks_path %>
-    <%= link_to "ユーザー設定", edit_user_registration_path %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    ようこそ<%= current_user.name %>さん
-  <% else %>
-    <%= link_to "マイタスク", mypage_show_task_path(current_user.id) %>
-    <%= link_to "タスク一覧", tasks_path %>
-    <%= link_to "ユーザー設定", edit_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-  <% end %>
+    <header class="well">
+      <div class="alert alert-secondary" role="alert">
+        <p class="header_menu", style="font-size: 30px; margin-bottom: 0px;">タスク管理アプリ</h3>
+        <% if user_signed_in? %>
+          <p class="header_menu"><%= link_to "マイタスク", mypage_show_task_path(current_user.id) %></p>
+          <p class="header_menu"><%= link_to "タスク一覧", tasks_path %></p>
+          <p class="header_menu"><%= link_to "ユーザー設定", edit_user_registration_path %></p>
+          <p class="header_menu"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+          <p class="header_menu", style="float: right; margin-top: 15px;">ようこそ<%= current_user.name %>さん</p>
+        <% else %>
+          <p class="header_menu"><%= link_to "マイタスク", new_user_session_path %></p>
+          <p class="header_menu"><%= link_to "タスク一覧", tasks_path %></p>
+          <p class="header_menu"><%= link_to "ユーザー設定", edit_user_registration_path %></p>
+          <p class="header_menu"><%= link_to "ログイン", new_user_session_path %></p>
+        <% end %>
+      </div>
+    </header>
 
   <% if notice %>
     <p class="alert alert-notice"><%= notice %></p>
