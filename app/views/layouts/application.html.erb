@@ -42,10 +42,6 @@
                 <li class="nav-item">
                   <div class="nav-link"><%= "ようこそ#{current_user.name}さん" %></div>
                 </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
-                </li>
               <% end %>
             </ul>
 
