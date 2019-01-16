@@ -1,42 +1,38 @@
 <div class="container">
-  <h1>アサイン</h1>
-  <% if current_user.id == @task.user_id %>
-    <%= form_for @task, :url => {:action => 'assign_update'} do |f| %>
-        <p>現在アサインされているユーザー</p>
-        <p><%= f.label :新しくアサインするユーザー, class: "new_assign" %></p>
-        <p><%= @task.user.name %></p>
-        <p class="assign_select"><%= f.collection_select :user, @user, :id, :name, {}, {class: "form-control"} %></p>
-        <p><button type="submit" class="btn btn-success" style="margin-left: 0px;">アサインする</button></p>
-    <% end %>
-    <div class="row">
-    <div class="mx-auto">
-      <div class="card bg-light mb-3" style="max-width: 20rem;">
-        <h1>
-          タスク <%= @task.id %>
-        </h1>
+  <h1 class="mt-5">アサイン</h1>
 
-        <p>
-          <%= @task.title %>
-        </p>
+          <% if current_user.id == @task.user_id %>
+            <%= form_for @task, :url => {:action => 'assign_update'} do |f| %>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="ml-3 mt-2">現在アサインされているユーザー</div>
+                  <div class="ml-3 mt-2"><%= @task.user.name %></div>
+                </div>
+                <div class="col-md-4 offset-md-4">
+                  <%= f.label :新しくアサインするユーザー%>
+                  <%= f.collection_select :user, @user, :id, :name, {}, {class: "form-control"} %>
+                </div>
+              </div>
 
-        <p>
-          期限：<%= @task.deadline %>
-        </p>
+                <button type="submit" class="btn btn-success mt-3 ml-3">アサインする</button>
+            <% end %>
 
-        <p>
-          ステータス:
-          <% if @task.status == "1" %>
-            対応中
-          <% elsif @task.status == "2" %>
-            未対応
-          <% elsif @task.status == "3" %>
-            完了
+            <div class="col-xs-12 col-md-12">
+                <div class="card bg-light mt-2">
+                  <div class="card-body p-5 text-dark">
+                    <h1>タスク<%= @task.id %></h1>
+                    <div><%= @task.title %></div>
+                    <div class="mt-2">期限：<%= @task.deadline.strftime("%Y年%m月%d日 %H:%M:%S") %></div>
+                    <div class="mt-2">ステータス:
+                      <% if @task.status == "1" %>
+                        対応中
+                      <% elsif @task.status == "2" %>
+                        未対応
+                      <% elsif @task.status == "3" %>
+                        完了
+                      <% end %>
+                </div>
+            </div>
           <% end %>
-        </p>
-      </div>
-
-  <% else %>
-    <p>タスクのアサインは、担当者しか出来ません</p>
-  <% end %>
-  </div>
+    </div>
 </div>

@@ -9,22 +9,49 @@
   </head>
 
   <body>
-    <header class="well">
-      <div class="alert alert-secondary" role="alert">
-        <p class="header_menu", style="font-size: 30px; margin-bottom: 0px;">タスク管理アプリ</h3>
-        <% if user_signed_in? %>
-          <p class="header_menu"><%= link_to "マイタスク", mypage_show_task_path(current_user.id) %></p>
-          <p class="header_menu"><%= link_to "タスク一覧", tasks_path %></p>
-          <p class="header_menu"><%= link_to "ユーザー設定", edit_user_registration_path %></p>
-          <p class="header_menu"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-          <p class="header_menu", style="float: right; margin-top: 15px;">ようこそ<%= current_user.name %>さん</p>
-        <% else %>
-          <p class="header_menu"><%= link_to "マイタスク", new_user_session_path %></p>
-          <p class="header_menu"><%= link_to "タスク一覧", tasks_path %></p>
-          <p class="header_menu"><%= link_to "ユーザー設定", edit_user_registration_path %></p>
-          <p class="header_menu"><%= link_to "ログイン", new_user_session_path %></p>
-        <% end %>
-      </div>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">タスク管理アプリ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav mr-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "マイタスク", mytask_task_path(current_user.id), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "タスク一覧", tasks_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ユーザー設定", edit_user_registration_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+
+            <ul class="navbar-nav">
+              <% if user_signed_in? %>
+                <li class="nav-item">
+                  <div class="nav-link"><%= "ようこそ#{current_user.name}さん" %></div>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+                </li>
+              <% end %>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
     </header>
 
   <% if notice %>

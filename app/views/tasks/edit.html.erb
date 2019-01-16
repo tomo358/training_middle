@@ -1,12 +1,7 @@
 <% if @task.user_id == current_user.id %>
 
   <%= render 'form', task: @task %>
-
-  <%= link_to 'Show', @task %> |
-
+  
 <% else %>
   <p>タスク編集は、担当者しか出来ません</p>
-
-  <%= link_to 'Show', @task %> |
-
 <% end %>

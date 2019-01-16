@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'tasks#index'
   resources :tasks  do
     member do
-      get 'mypage_show'
+      get 'mytask'
       get 'assign'
       patch 'assign_update'
     end

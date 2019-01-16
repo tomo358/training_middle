@@ -1,8 +1,8 @@
 <div class="container">
   <% if params[:action] == "new" %>
-    <h1>新規タスク</h1>
+    <h1 class="mt-5">新規タスク</h1>
   <% else %>
-    <h1>タスク編集</h1>
+    <h1 class="mt-5">タスク編集</h1>
   <% end %>
 
   <%= form_for(task) do |f| %>
@@ -30,7 +30,7 @@
 
     <div class="field form-group">
       <%= f.label :deadline %></br>
-      <%= f.datetime_select :deadline, class: 'form-control' %>
+      <%= f.datetime_select :deadline, :use_month_numbers => true, class: 'form-control' %>
     </div>
 
     <div class="field form-group">
@@ -48,10 +48,10 @@
     <div class="action">
       <% if params[:action] == "new" %>
         <%= f.submit '新規作成', class: 'btn btn-success' %>
-        <%= link_to 'Back', tasks_path, class: 'btn btn-secondary' %>
+        <%= link_to '一覧へ戻る', tasks_path, class: 'btn btn-secondary' %>
       <% else %>
         <%= f.submit '更新', class: 'btn btn-success' %>
-        <%= link_to 'Back', tasks_path, class: 'btn btn-secondary' %>
+        <%= link_to '一覧へ戻る', tasks_path, class: 'btn btn-secondary' %>
       <% end %>
     </div>
   <% end %>

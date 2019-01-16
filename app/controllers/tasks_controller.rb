@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy, :assign, :assign_update]
   before_action :set_user, only: [:mypage_show, :assign]
-  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :mypage_show]
 
   # GET /tasks
   # GET /tasks.json
@@ -14,8 +14,8 @@ class TasksController < ApplicationController
   def show
   end
 
-  def mypage_show
-    @tasks = Task.all
+  def mytask
+    @tasks = Task.where(user_id: current_user.id)
   end
 
   def assign
