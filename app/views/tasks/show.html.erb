@@ -5,6 +5,7 @@
         <div class="card-body p-5 text-dark">
           <h1>タスク<%= @task.id %></h1>
               <div><%= @task.title %></div>
+              <div>内容：<%= @task.content %></div>
               <div class="mt-2">期限：<%= @task.deadline.strftime("%Y年%m月%d日 %H:%M:%S") %></div>
               <div class="mt-2">担当者：<%= @task.user.name %></div>
               <div class="mt-2">ステータス：
