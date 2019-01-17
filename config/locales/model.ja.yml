@@ -18,3 +18,29 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+
+  devise:
+    sessions:
+      new:
+        log_in: 'ログイン'
+    registrations:
+      new:
+        sign_up: 'サインアップ'
+        characters_minimum: '文字以上'
+      edit:
+        password_text: '変更したくない場合は空白のままにしてください'
+        characters_minimum: '文字以上'
+        current_password: '変更を確認するために現在のパスワードが必要です'
+        cancel_account: 'アカウント削除'
+        unhappy: '本当に宜しいですか？'
+    confirmations:
+      new:
+        resend: '承認メールを再送信する'
+    shared:
+      links:
+        log_in: 'ログイン'
+        sign_up: 'サインアップ'
+        forgot_your_password: 'パスワードを忘れた?'
+    passwords:
+      new:
+        forgot: 'パスワードをお忘れですか？'
