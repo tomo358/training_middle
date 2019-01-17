@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-4 offset-md-4">
                   <%= f.label :新しくアサインするユーザー%>
-                  <%= f.collection_select :user, @user.where.not(id: current_user.id), :id, :name, {}, {class: "form-control"} %>
+                  <%= f.collection_select :user, @users.where.not(id: current_user.id), :id, :name, {}, {class: "form-control"} %>
                 </div>
               </div>
 
