@@ -19,7 +19,7 @@ class TasksController < ApplicationController
 
   def assign_update
     if @task.update(user_id: user_params[:user].to_i)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      redirect_to @task, notice: 'タスクのアサインを更新しました'
     else
       render :edit
     end
@@ -35,9 +35,9 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
-
+    
       if @task.save
-        redirect_to @task, notice: 'Task was successfully created.'
+        redirect_to @task, notice: 'タスクを作成しました'
       else
         render :new
       end
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   def update
          @task = Task.find(params[:id])
       if @task.update(task_params)
-        redirect_to @task, notice: 'Task was successfully updated.'
+        redirect_to @task, notice: 'タスクを更新しました'
       else
         render :edit
       end
@@ -55,9 +55,9 @@ class TasksController < ApplicationController
   def destroy
     if @task.user_id == current_user.id
        @task.destroy
-       redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+       redirect_to tasks_url, notice: 'タスクを削除しました'
     else
-       redirect_to tasks_url, notice: 'Only the person in charge can delete it.'
+       redirect_to tasks_url, notice: '担当者だけが削除出来ます'
     end
   end
 
@@ -68,7 +68,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :content, :deadline, :status, :user_id_id)
+      params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
     end
 
     def user_params
